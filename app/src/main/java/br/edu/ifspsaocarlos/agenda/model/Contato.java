@@ -8,6 +8,9 @@ public class Contato implements Serializable{
     private String nome;
     private String fone;
     private String email;
+    private boolean flgFavorito;
+    private String fone2;
+    private String dtNasc;
 
     public Contato()
     {
@@ -37,5 +40,12 @@ public class Contato implements Serializable{
     public void setEmail(String email) {
         this.email = email;
     }
+    public boolean getFlgFavorito() { return flgFavorito; }
+    public void setFlgFavorito(boolean flgFavorito) {  this.flgFavorito = flgFavorito; }
+    public String getFone2() {  return fone2;  }
+    public void setFone2(String fone2) {  this.fone2 = fone2;  }
+    public String getDtNasc() { return dtNasc; }
+    public void setDtNasc(String dtNasc) { this.dtNasc = dtNasc; }
+
 }
 

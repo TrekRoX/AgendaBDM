@@ -20,6 +20,7 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -142,6 +143,25 @@ public class MainActivity extends AppCompatActivity{
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.pesqFavorito:
+                //Reseto a seleção do nome
+                EditText et = (EditText)findViewById(R.id.search_src_text);
+                et.setText("");
+                searchView.onActionViewCollapsed();
+
+                updateUI(null, true);
+
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -177,21 +197,28 @@ public class MainActivity extends AppCompatActivity{
 
     private void updateUI(String nomeContato)
     {
+        updateUI(nomeContato, false);
+    }
+    private void updateUI(String nomeContato, Boolean somenteFavoritos)
+    {
 
         contatos.clear();
 
-        if (nomeContato==null) {
-            contatos.addAll(cDAO.buscaTodosContatos());
-            empty.setText(getResources().getString(R.string.lista_vazia));
-            fab.show();
-
-        }
-        else {
+        if (nomeContato!=null) {
             contatos.addAll(cDAO.buscaContato(nomeContato));
             empty.setText(getResources().getString(R.string.contato_nao_encontrado));
             fab.hide();
-
-
+        }
+        else if(somenteFavoritos)
+        {
+            contatos.addAll(cDAO.buscaFavoritos());
+            empty.setText(getResources().getString(R.string.lista_fav_vazia));
+            fab.show();
+        }
+        else {
+            contatos.addAll(cDAO.buscaTodosContatos());
+            empty.setText(getResources().getString(R.string.lista_vazia));
+            fab.show();
         }
 
         recyclerView.getAdapter().notifyDataSetChanged();
@@ -215,6 +242,8 @@ public class MainActivity extends AppCompatActivity{
                 startActivityForResult(i, 2);
             }
         });
+
+
 
 
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {

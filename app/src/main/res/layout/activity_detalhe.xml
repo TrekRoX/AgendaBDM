@@ -50,6 +50,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
         </EditText>
+        <!--Atualização do app para a versão 3.0
+        Os usuários do app estão solicitando a inclusão de mais um campo para armazenar outro
+        número de telefone do contato. Implemente esta funcionalidade.-->
+        <TextView
+            android:id="@+id/textViewFone2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fone2">
+        </TextView>
+        <EditText
+            android:id="@+id/editTextFone2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </EditText>
+        <!--FIM-->
+
         <TextView
             android:id="@+id/textViewEmail"
             android:layout_width="wrap_content"
@@ -61,6 +77,52 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
         </EditText>
+
+        <!--DATA DE NASCIMENTO-->
+        <TextView
+            android:id="@+id/textViewDtNasc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/data_de_nascimento" >
+        </TextView>
+
+        <EditText
+            android:id="@+id/editTexDtNasc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:focusable="false"
+            />
+
+        <!--<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <EditText
+                android:id="@+id/editTexDtNasc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:layout_weight="1"
+                android:focusable="false"
+                />
+
+            <ImageButton
+                android:id="@+id/imageButtonCalendar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorPrimary"
+                android:src="@android:drawable/ic_menu_my_calendar"
+                android:layout_weight="3"
+                />
+        </LinearLayout>-->
+
+
+
+
+
+            <!--FIM-->
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
 
